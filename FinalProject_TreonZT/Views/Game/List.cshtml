@@ -1,0 +1,63 @@
+﻿@model GameListViewModel
+
+@{
+    ViewData["Title"] = "List";
+}
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" media="screen" />
+</head>
+<h1>GameList</h1>
+    <p>
+        <a asp-action="Add">Add Game</a>
+    </p>
+
+<div class="col-sm-10">
+    <table class="table table-bordered table-striped">
+   <thead>
+        <tr>
+                
+                <th>Against</th>
+                <th>Position</th>
+                <th>Home Score</th> 
+            <th>Away Score</th>
+            <th>Outcome</th>
+            <th>Goals</th>
+            <th>Assists</th>
+        </tr>
+    </thead>
+        <tbody>
+            @foreach (var Game in Model.Games)
+            {
+                <tr>
+                    
+                    <td>
+                        @Html.DisplayFor(modelItem => Game.Against)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Game.Position)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Game.HomeScore)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Game.AwayScore)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Game.Outcome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Game.Goals)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Game.Assists)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@Game.GameId">Edit</a> |
+                        
+                        <a asp-action="Delete" asp-route-id="@Game.GameId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
